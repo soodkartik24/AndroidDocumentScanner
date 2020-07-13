@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PerspectiveTransformation {
-    private static final String DEBUG_TAG = "PerspectiveTransformation";
 
     public PerspectiveTransformation() {
     }
@@ -73,8 +72,8 @@ public class PerspectiveTransformation {
     private MatOfPoint2f sortCorners(MatOfPoint2f corners) {
         Point center = getMassCenter(corners);
         List<Point> points = corners.toList();
-        List<Point> topPoints = new ArrayList<Point>();
-        List<Point> bottomPoints = new ArrayList<Point>();
+        List<Point> topPoints = new ArrayList<>();
+        List<Point> bottomPoints = new ArrayList<>();
 
         for (Point point : points) {
             if (point.y < center.y) {

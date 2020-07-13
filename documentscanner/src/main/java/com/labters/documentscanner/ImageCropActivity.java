@@ -167,10 +167,8 @@ public class ImageCropActivity extends DocumentScanActivity {
 
     @Override
     protected void showError(CropperErrorType errorType) {
-        switch (errorType) {
-            case CROP_ERROR:
-                Toast.makeText(this, ScannerConstants.cropError, Toast.LENGTH_LONG).show();
-                break;
+        if (errorType == CropperErrorType.CROP_ERROR) {
+            Toast.makeText(this, ScannerConstants.cropError, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -243,11 +241,13 @@ public class ImageCropActivity extends DocumentScanActivity {
             e.printStackTrace();
         } finally {
             try {
-                fos.close();
+                if (fos != null) {
+                    fos.close();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return directory.getAbsolutePath();
+       return directory.getAbsolutePath();
     }
 }
